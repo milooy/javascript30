@@ -1,0 +1,21 @@
+body {
+  text-align: center;
+  background: #F6F6F8;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+li {
+  display: inline-block;
+  flex: auto;
+  background: white;
+  margin: 0.5rem;
+  padding: 1.5rem 0 0.5rem;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+}
+li img {
+  height: 100px;
+}
