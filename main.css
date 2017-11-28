@@ -3,6 +3,8 @@ body {
   background: #F6F6F8;
 }
 ul {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
