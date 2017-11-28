@@ -8,6 +8,10 @@ h1 {
   background: #3cffc9;
   font-weight: 900;
 }
+ul {
+  padding: 0;
+  margin: 0;
+}
 li {
   display: inline-block;
   border: 1px solid #f3f3f3;
@@ -43,10 +47,7 @@ li p {
 }
 footer {
   color: white;
-  position: fixed;
-  bottom: 0;
-  width: 92%;
-  padding: 1rem;
+  margin-top: 3rem;
 }
 footer p {
   margin: 0;
