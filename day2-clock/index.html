@@ -5,27 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS&JS CLOCK</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link rel="stylesheet" href="../common.css">
 </head>
 <body>
-    <h1>CSS&JS CLOCK</h1>
     <div class="clock">
-        <div class="hand hour-hand"></div>
         <div class="hand min-hand"></div>
+        <div class="hand hour-hand"></div>
         <div class="hand sec-hand"></div>
+        <div class="center"></div>
+    </div>
+    <div class="digital-clock">
+        <div class="digit digit-hour"></div>:<div class="digit digit-min"></div>:<div class="digit digit-sec"></div>
     </div>
     <footer>
         <p><a href="../">Back to List</a></p>
-        <p><a href="https://javascript30.com/">Javascript30</a> Day1 17/11/28 Jay Jin</p>
+        <p><a href="https://javascript30.com/">Javascript30</a> Day2 17/11/29 Jay Jin</p>
     </footer>
     <script src="main.js"></script>
 </body>
 <style>
+    body {
+        text-align: center;
+        background: #465231;
+        padding: 3rem 0;
+    }
     .clock {
         width: 200px;
         height: 200px;
-        border: 5px solid black;
+        border: 17px solid #191b18;
         border-radius: 50%;
         position: relative;
+        background: linear-gradient(to bottom, #d8e0de 0%,#aebfbc 16%,#99afab 24%,#8ea6a2 42%,#8ea6a2 42%,#829d98 56%,#4e5c5a 82%,#0e0e0e 100%);
+        margin: 0 auto;
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
     }
     .hand {
         width: 48%;
@@ -34,35 +47,73 @@
         top: 50%;
         position: absolute;
         transform-origin: 100%;
+        transition-timing-function: ease;
+        transition: all 0.1 ease;
     }
     .hand.hour-hand {
-        background: red;
+        background:#ff2900;
         width: 30%;
-        /* text-align: right; */
         margin-left: 18%;
     }
     .hand.sec-hand {
-        height: 3px;
+        height: 2px;
+        background: #ffffff85;
+    }
+    .center {
+        width: 7px;
+        height: 7px;
+        background: black;
+        border-radius: 50%;
+        position: absolute;
+        left: 47%;
+        top: 49%;
+    }
+    .digital-clock {
+        font-size: 4.3rem;
+        font-weight: 900;
+        font-family: 'VT323', monospace;
+        color: #ffffff;
+    }
+    .digital-clock .digit {
+        display: inline-block;
+
+    }
+    footer {
+        position: fixed;
+        width: 95%;
+        bottom: 10px;
+        margin: 0;
+    }
+    footer a {
+        color: white;
     }
 </style>
 <script>
     function getDegree(num) {
         return (num/60)*360 + 90;
     }
-
+    
     function setHand() {
         const hourEl = document.querySelector('.hour-hand');
         const minEl = document.querySelector('.min-hand');
         const secEl = document.querySelector('.sec-hand');
         
+        const hourDigitEl = document.querySelector('.digit-hour');
+        const minDigitEl = document.querySelector('.digit-min');
+        const secDigitEl = document.querySelector('.digit-sec');
+        
         const date = new Date();
-        const ho = getDegree(date.getHours());
-        const min = getDegree(date.getMinutes());
-        const sec = getDegree(date.getSeconds());
-
-        hourEl.style.transform = `rotate(${ho}deg)`;
-        minEl.style.transform = `rotate(${min}deg)`;
-        secEl.style.transform = `rotate(${sec}deg)`;
+        const ho = date.getHours();
+        const min = date.getMinutes();
+        const sec = date.getSeconds();
+        
+        hourEl.style.transform = `rotate(${getDegree(ho)}deg)`;
+        minEl.style.transform = `rotate(${getDegree(min)}deg)`;
+        secEl.style.transform = `rotate(${getDegree(sec)}deg)`;
+        
+        hourDigitEl.textContent = ho;
+        minDigitEl.textContent = min;
+        secDigitEl.textContent = sec;
     }    
     setHand();
     setInterval(setHand, 1000);

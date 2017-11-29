@@ -1,0 +1,17 @@
+footer {
+  color: white;
+  margin: 3rem 0 5rem;
+}
+footer p {
+  margin: 0;
+  display: inline-block;
+}
+footer p:nth-of-type(1) {
+  float: left;
+}
+footer p:nth-of-type(2) {
+  float: right;
+}
+footer a {
+  color: #0046a2;
+}
