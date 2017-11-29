@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS&JS CLOCK</title>
+</head>
+<body>
+    <h1>CSS&JS CLOCK</h1>
+    <div class="clock">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand sec-hand"></div>
+    </div>
+    <footer>
+        <p><a href="../">Back to List</a></p>
+        <p><a href="https://javascript30.com/">Javascript30</a> Day1 17/11/28 Jay Jin</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+<style>
+    .clock {
+        width: 200px;
+        height: 200px;
+        border: 5px solid black;
+        border-radius: 50%;
+        position: relative;
+    }
+    .hand {
+        width: 48%;
+        height: 5px;
+        background: black;
+        top: 50%;
+        position: absolute;
+        transform-origin: 100%;
+    }
+    .hand.hour-hand {
+        background: red;
+        width: 30%;
+        /* text-align: right; */
+        margin-left: 18%;
+    }
+    .hand.sec-hand {
+        height: 3px;
+    }
+</style>
+<script>
+    function getDegree(num) {
+        return (num/60)*360 + 90;
+    }
+
+    function setHand() {
+        const hourEl = document.querySelector('.hour-hand');
+        const minEl = document.querySelector('.min-hand');
+        const secEl = document.querySelector('.sec-hand');
+        
+        const date = new Date();
+        const ho = getDegree(date.getHours());
+        const min = getDegree(date.getMinutes());
+        const sec = getDegree(date.getSeconds());
+
+        hourEl.style.transform = `rotate(${ho}deg)`;
+        minEl.style.transform = `rotate(${min}deg)`;
+        secEl.style.transform = `rotate(${sec}deg)`;
+    }    
+    setHand();
+    setInterval(setHand, 1000);
+</script>
+</html>
