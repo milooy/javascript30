@@ -4,57 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CSS Variables</title>
+    <title>시력검사</title>
     <link rel="stylesheet" href="../common.css">
 </head>
 <body>
-    <h1>Update CSS Variables with <span class="em">JS</span></h1>
+    <h1>저 멀리 집 쳐다보세요~</h1>
     <div class="action">
-      <label for="spacing">Spacing</label>
-      <input name="spacing" type="range" min="10" max="200" value="10" data-sizing="px"/>
+      <label for="size">size</label>
+      <input name="size" type="range" min="100" max="400" value="300" data-sizing="px"/>
       
       <label for="blur">Blur</label>
-      <input name="blur" type="range" min="0" max="25" value="5" data-sizing="px"/>
+      <input name="blur" type="range" min="0" max="25" value="2" data-sizing="px"/>
       
-      <label for="base">Base Color</label>
-      <input name="base" type="color" value="#ff3939"/>
+      
     </div>
     <div class="img-container">
-      <img src="./image.jpg" alt="">
+      <img src="./image.png" alt="">
+    </div>
+    <div class="change-background">
+        <label for="base">배경 색 바꾸기</label>
+        <input name="base" type="color" value="black"/>
     </div>
     <footer>
         <p><a href="../">Back to List</a></p>
-        <p><a href="https://javascript30.com/">Javascript30</a> Day2 17/11/29 Jay Jin</p>
+        <p><a href="https://javascript30.com/">Javascript30</a> Day3 17/11/30 Jay Jin</p>
     </footer>
 </body>
 <style>
   :root {
-    --base: #ff3939;
-    --spacing: 10px;
-    --blur: 10px;
+    --base: black;
+    --size: 300px;
+    --blur: 2px;
   }
   body {
     text-align: center;
+    background: var(--base);
+  }
+  label {
+    color: white;
   }
   .em {
     color: var(--base);
   }
+  h1 {
+    color: white;
+  }
   .img-container {
-    background: var(--base);
-    padding: var(--spacing);
+    
+    
     display: inline-block;
     margin: 2rem;
   }
   img {
-    width: 300px;
+    width: var(--size);
     filter: blur(var(--blur));
+    border-radius: 50%;
   }
 
 </style>
 <script>
     const inputElList = document.querySelectorAll('input');
     function foo(e) {
-      console.log("하이2", e, this)
       const suffix = this.dataset.sizing || '';
       console.log(suffix, this.name);
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
