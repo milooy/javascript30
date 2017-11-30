@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Variables</title>
+    <link rel="stylesheet" href="../common.css">
+</head>
+<body>
+    <h1>Update CSS Variables with <span class="em">JS</span></h1>
+    <div class="action">
+      <label for="spacing">Spacing</label>
+      <input name="spacing" type="range" min="10" max="200" value="10" data-sizing="px"/>
+      
+      <label for="blur">Blur</label>
+      <input name="blur" type="range" min="0" max="25" value="5" data-sizing="px"/>
+      
+      <label for="base">Base Color</label>
+      <input name="base" type="color" value="#ff3939"/>
+    </div>
+    <div class="img-container">
+      <img src="./image.jpg" alt="">
+    </div>
+    <footer>
+        <p><a href="../">Back to List</a></p>
+        <p><a href="https://javascript30.com/">Javascript30</a> Day2 17/11/29 Jay Jin</p>
+    </footer>
+</body>
+<style>
+  :root {
+    --base: #ff3939;
+    --spacing: 10px;
+    --blur: 10px;
+  }
+  body {
+    text-align: center;
+  }
+  .em {
+    color: var(--base);
+  }
+  .img-container {
+    background: var(--base);
+    padding: var(--spacing);
+    display: inline-block;
+    margin: 2rem;
+  }
+  img {
+    width: 300px;
+    filter: blur(var(--blur));
+  }
+
+</style>
+<script>
+    const inputElList = document.querySelectorAll('input');
+    function foo(e) {
+      console.log("하이2", e, this)
+      const suffix = this.dataset.sizing || '';
+      console.log(suffix, this.name);
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    inputElList.forEach(el => {
+      el.addEventListener('input',foo);
+    });
+</script>
+</html>
