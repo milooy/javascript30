@@ -1,6 +1,123 @@
+@color-1: #ff4242;
+@color-2: #2196f3;
+@color-3: #cddc39;
+@color-4: #ffa52f;
+
+.outer {
+  display: flex; // 상위 DOM을 플렉스로 감싼다
+  border: 3px solid #e8e8e8;
+  margin-bottom: 8px;
+  // height: 50px;
+  div {
+    font-size: 2rem;
+    color: white;
+    font-weight: 900;
+    text-align: center;
+    padding: 1rem;
+    &:nth-child(1) {
+      background: @color-1;
+    }
+    &:nth-child(2) {
+      background: @color-2;
+    }
+    &:nth-child(3) {
+      background: @color-3;
+    }
+    &:nth-child(4) {
+      background: @color-4;
+    }
+  }
+}
+
 container.part1 {
+  .outer { // 플렉스로 감싼 돔에 flex-direction 설정
+    // flex-direction: row; // 이게 기본. 행으로 쌓임
+    flex-direction: row-reverse; // row가 반대로 쌓임
+    // flex-direction: column; // 열로 쌓임
+  }
+}
+
+container.part2 {
+  div {
+    flex: 1; // 각각 1씩 부피 차지
+    &.box2 {
+      flex: 2;
+    }
+    &.box2 {
+      order: 5; // 기본은 0. 이러면 2만 맨 뒤로 간다
+    }
+  }
+}
+
+container.part3 {
+  .outer1 {
+    // justify-content: flex-start; // 이게 기본. 
+    justify-content: flex-end; // main axis의 끝쪽으로 정렬
+  }
+  .outer2 {
+    justify-content: center; // main axis의 중앙
+  }
+  .outer3 {
+    // justify-content: space-between; // 중간에 스페이스 넣어서 정렬
+    justify-content: space-around; // 중간에 스페이스 넣어서 정렬하는데 처음이랑 끝도 스페이스 넣음
+  }
+  .outer4 {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30vh;
+  }
+}
+
+container.part4 {
   .outer {
-    display: flex;
-    border: 3px solid red;
+    height: 15vh;
+    // align-items: stretch; // 이게 기본. height에 맞게 쭉쭉 늘린다
+  }
+  .outer1 {
+    align-items: center; // 수직 가운데 정렬
+  }
+  .outer2 {
+    align-items: flex-end; // 수직 하단 정렬
+  }
+  .outer3 {
+    align-items: baseline; // 각각 크기 다른 div, 그들의 baseline에 맞게 수직 정렬
+    div {
+      &:nth-child(2) {
+        font-size: 30px;
+      }
+      &:nth-child(3) {
+        font-size: 50px
+      }
+    }
+  }
+}
+
+container.part5 {
+  .outer1 {
+    align-content: space-between; // cross-axis에서 space-between 정렬
+    flex-wrap: wrap;
+    height: 30vh;
+    div {
+      width: 40%;
+    }
+  }
+  .outer2 {
+    align-content: flex-end;
+    justify-content: center; // main-axis도 가운데 정렬해보자
+    flex-wrap: wrap;
+    height: 30vh;
+    div {
+      width: 40%;
+    }
+  }
+}
+
+container.part6 {
+  .outer1 {
+    align-items: flex-end;
+    height: 20vh;
+    .box2 {
+      align-self: flex-start; // 본인을 align함
+    }
   }
 }

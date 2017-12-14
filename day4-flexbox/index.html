@@ -12,12 +12,117 @@
     <h1>CSS Flexbox</h1>
 
     <container class="part1">
-      <h2>flex-direction</h2>  
+      <h2>flex-direction: 메인 축 정하기</h2>  
+      <ul>
+        <li>flex-direction: row // 기본. 행으로 쌓임 (왼쪽 -> 오른쪽)</li>
+        <li>row-reverse // row가 반대로 쌓임 (오른쪽 -> 왼쪽)</li>
+        <li>column // 열로 쌓임(위 -> 아래)</li>
+      </ul>
       <div class="outer">
         <div>1</div>
         <div>2</div>
         <div>3</div>
       </div>
     </container>
-</body>
+    <container class="part2">
+      <h2>flex wrapping: 각 요소 부피, 순서 정하기</h2>  
+      <ul>
+        <li>flex: 1 // 각각 1씩 부피 차지.  1/2/1 하면 그만큼씩 부피 차지. </li>
+        <li>order: 5 // 기본은 0. 클수록 main-axis의 뒤로 간다.</li>
+      </ul>
+      <div class="outer">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+      </div>
+    </container>
+    <container class="part3">
+      <h2>justify-content: 메인 축 기준으로 정렬</h2>
+      <ul>
+        <li>justify-content: flex-start // 기본 정렬</li>
+        <li>flex-end // main-axis의 끝쪽으로 정렬</li>
+        <li>center // main-axis의 중앙으로 정렬</li>
+        <li>space-between // 중간에 스페이스 넣어서 정렬</li>
+        <li>space-around // 중간에 스페이스 넣어서 정렬하는데 처음이랑 끝도 스페이스 넣음</li>
+        <li>flex-direction을 column으로 했을 때는 height를 정해줘야 원하는 정렬이 나올것이다.</li>
+      </ul>
+      <div class="outer outer1">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+      </div>
+      <div class="outer outer2">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+      </div>
+      <div class="outer outer3">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+      </div>
+      <div class="outer outer4">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+      </div>
+    </container>
+
+    <container class="part4">
+        <h2>align-items: 수직 정렬</h2>  
+        <ul>
+          <li>align-items: center; // 수직 가운데 정렬</li>
+          <li>align-items: stretch; // 이게 기본. height에 맞게 쭉쭉 늘린다</li>
+          <li>flex-end; // 수직 하단 정렬</li>
+          <li>baseline; // 각각 크기 다른 div, 그들의 baseline에 맞게 수직 정렬</li>
+        </ul>
+        <div class="outer outer1">
+          <div class="box1">1</div>
+          <div class="box2">2</div>
+          <div class="box3">3</div>
+        </div>
+        <div class="outer outer2">
+          <div class="box1">1</div>
+          <div class="box2">2</div>
+          <div class="box3">3</div>
+        </div>
+        <div class="outer outer3">
+          <div class="box1">1</div>
+          <div class="box2">2</div>
+          <div class="box3">3</div>
+        </div>
+      </container>
+
+      <container class="part5">
+          <h2>align-content: 수직 정렬 (justify-content랑 같은 인자를 받지만, 얘는 cross-axis 기준)</h2>  
+          <div class="outer outer1">
+            <div class="box1">1</div>
+            <div class="box2">2</div>
+            <div class="box3">3</div>
+          </div>
+          <div class="outer outer2">
+            <div class="box1">1</div>
+            <div class="box2">2</div>
+            <div class="box3">3</div>
+          </div>
+      </container>
+
+      <container class="part6">
+          <h2>align-self: 자기 자신을 align함</h2>  
+          <ul>
+            <li>부모는 align-items: flex-end하고 자식은 align-self: flex-start 할 수 있다.</li>
+          </ul>
+          <div class="outer outer1">
+            <div class="box1">1</div>
+            <div class="box2">2</div>
+            <div class="box3">3</div>
+            <div class="box4">4</div>
+          </div>
+          <div class="outer outer2">
+            <div class="box1">1</div>
+            <div class="box2">2</div>
+            <div class="box3">3</div>
+          </div>
+      </container>
+  </body>
 </html>
