@@ -14,19 +14,23 @@
     font-weight: 900;
     text-align: center;
     padding: 1rem;
-    &:nth-child(1) {
+    &:nth-child(1), &.box1 {
       background: @color-1;
     }
-    &:nth-child(2) {
+    &:nth-child(2), &.box2 {
       background: @color-2;
     }
-    &:nth-child(3) {
+    &:nth-child(3), &.box3 {
       background: @color-3;
     }
-    &:nth-child(4) {
+    &:nth-child(4), &.box4 {
       background: @color-4;
     }
   }
+}
+
+h2 {
+  margin-top: 4rem;
 }
 
 container.part1 {
@@ -118,6 +122,46 @@ container.part6 {
     height: 20vh;
     .box2 {
       align-self: flex-start; // 본인을 align함
+    }
+    .box4 {
+      align-self: stretch;
+    }
+  }
+}
+
+container.part7 {
+  .outer1 {
+    div {
+      // flex: 1; // flex-grow: 1; flex-shrink:1; 을 줄인거임
+      // flex-grow: 1; // 여분의 공간이 있을 때 어떡할거냐
+      // flex-shrink: 1;
+      // flex-basis: 
+      &.box1 {
+        flex-basis: 200px;
+        flex-grow: 5; // box1이 box2보다 5배 길이를 가진 것이 아니고, 200px씩을 뺀 남은 여백에서 비율이 5:1로 간다
+        flex-shrink: 3; // 400px아래로 내려갔을 때 뺀 값만큼 3배로 줄어듦
+        flex: 5 3 200px; // 위를 한번에 쓴 것. grow, shrink, basis
+      }
+      &.box2 {
+        flex-basis: 200px;
+        flex-grow: 1; // 기본은 0이다 - 지정 안하면 여백 있어도 아무 것도 안한다
+        flex-shrink: 1;
+      }
+    }
+  }
+}
+
+container.part8 {
+  .outer{
+    flex-wrap: wrap; // 이거 없으면 그냥 한 줄에 다 나올텐데 넣으니 스르륵 내려옴(200px맞춰서)
+    flex-direction: column;
+    height: 50vh;
+    div {
+      flex-basis: 120px;
+      flex-grow: 1;
+      &.box3 {
+        flex-grow: 10; // flex-wrap으로 아래로 떨어져도, 여백의 10배 차지하는건 그 row만 기준이다. 전체 row기준 아님.
+      }
     }
   }
 }

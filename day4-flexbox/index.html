@@ -118,10 +118,37 @@
             <div class="box3">3</div>
             <div class="box4">4</div>
           </div>
-          <div class="outer outer2">
+      </container>
+      
+      <container class="part7">
+          <h2>flex basis, grow, shrink: 기본 크기, 여백이 있을때/없을때 비율 정하기</h2>  
+          <ul>
+            <li>flex-basis:200px; // 기본 크기는 200px</li>
+            <li>flex-grow: 5; // box1이 box2보다 5배 길이를 가진 것이 아니고, 200px씩을 뺀 남은 여백에서 비율이 5:1로 간다. 기본은 0이다 - 지정 안하면 여백 있어도 아무 것도 안한다</li>
+            <li>flex-shrink: 3; // 400px아래로 내려갔을 때 뺀 값만큼 3배로 줄어듦</li>
+            <li>flex: 5 3 200px; // 위를 한번에 쓴 것. grow, shrink, basis</li>
+          </ul>
+          <div class="outer outer1">
+            <div class="box1">1</div>
+            <div class="box2">2</div>
+          </div>
+      </container>
+      
+      <container class="part8">
+          <h2>flex-wrap: row를 감싸주기</h2>  
+          <ul>
+            <li>flex-wrap: wrap; // 이거 없으면 그냥 한 줄에 다 나올텐데 넣으니 스르륵 내려옴(200px맞춰서)</li>
+            <li>flex-grow: 10; // flex-wrap으로 아래로 떨어져도, 여백의 10배 차지하는건 그 row만 기준이다. 전체 row기준 아님.</li>
+          </ul>
+          <div class="outer outer1">
             <div class="box1">1</div>
             <div class="box2">2</div>
             <div class="box3">3</div>
+            <div class="box4">4</div>
+            <div class="box1">1</div>
+            <div class="box2">2</div>
+            <div class="box3">3</div>
+            <div class="box4">4</div>
           </div>
       </container>
   </body>
